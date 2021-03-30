@@ -5,4 +5,4 @@ export default {
     ping: function() {
         return axios.get(ENDPOINT);
     }
-}
+};
