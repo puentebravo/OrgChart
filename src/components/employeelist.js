@@ -1,35 +1,9 @@
-import React, { useState, useEffect } from "react";
-import API from "../utils/API";
+import React from "react";
 
-function EmployeeList() {
-  const [tableEntry, setTableEntry] = useState({
-    image: "",
-    firstName: "",
-    lastName: "",
-    number: [],
-    streetName: "",
-    address: "",
-    email: "",
-    phone: "",
-  });
 
-  useEffect(() => {
-    API.ping().then((res) => {
-      console.log(res)
-      setTableEntry({
-        image: res.data.results[0].picture.thumbnail,
-        firstName: res.data.results[0].name.first,
-        lastName: res.data.results[0].name.last,
-        number: res.data.results[0].location.street.number,
-        streetName: res.data.results[0].location.street.name,
-        address: res.data.results[0].location.city,
-        email: res.data.results[0].email,
-        phone: res.data.results[0].phone,
-      });
-    });
-  }, []);
-
-  const results = [tableEntry]
+function EmployeeList(props) {
+  
+  const results = [props.results]
 
   return (
     <div className="container">
