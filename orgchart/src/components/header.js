@@ -2,11 +2,15 @@ import React from "react";
 
 function StaticHeader() {
   return (
-    <div className="row justify-content-center">
-      <div className="col-lg-12 bg-dark text-white">
-        <h1 className="display-4">Welcome to OrgChart.</h1>
-      </div>
-    </div>
+    <nav className="navbar navbar-light bg-dark">
+  <div className="container-fluid">
+    <h4 className="display-4 text-white">Welcome to OrgChart</h4>
+    <form className="d-flex">
+      <input className="form-control me-2" type="search" placeholder="Search Directory" aria-label="Search"/>
+      <button className="btn btn-outline-warning" type="submit">Search</button>
+    </form>
+  </div>
+</nav>
   );
 }
 
