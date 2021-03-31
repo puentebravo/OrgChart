@@ -1,5 +1,5 @@
 import axios from "axios";
-const ENDPOINT = "https://randomuser.me/api/";
+const ENDPOINT = "https://randomuser.me/api/?results=50";
 
 export default {
     ping: function() {
