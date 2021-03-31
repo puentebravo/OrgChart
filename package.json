@@ -1,6 +1,6 @@
 {
-  "name": "orgchart",
   "homepage": "https://puentebravo.github.io/OrgChart",
+  "name": "orgchart",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
