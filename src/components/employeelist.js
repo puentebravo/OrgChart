@@ -1,43 +1,51 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import API from "../utils/API";
+import "../styles/employeelist.css";
 
+function EmployeeList() {
+  const [employees, setEmployees] = useState([]);
 
-function EmployeeList(props) {
-  
-  const results = [props.results]
+  useEffect(() => {
+    API.ping().then((res) => {
+      setEmployees(res.data.results);
+    });
+  }, []);
 
   return (
-    <div className="container">
-      <div className="row justify-content-center">
-        <div className="col-lg-12">
-          <table className="table table-dark table-striped">
-            <thead>
-              <tr>
-                <th scope="col">Image</th>
-                <th scope="col">Name</th>
-                <th scope="col">Address</th>
-                <th scope="col">Email</th>
-                <th scope="col">Phone</th>
+      <div className="row">
+        <table className="table table-dark table-striped">
+          <thead>
+            <tr>
+              <th scope="col">Image</th>
+              <th scope="col">Name</th>
+              <th scope="col">Address</th>
+              <th scope="col">Email</th>
+              <th scope="col">Phone</th>
+            </tr>
+          </thead>
+          <tbody>
+            {employees.map((empData, index) => (
+              <tr key={index}>
+                <td>
+                  <img
+                    src={empData.picture.thumbnail}
+                    alt="employee thumbnail"
+                  ></img>
+                </td>
+                <td>
+                  {empData.name.first} {empData.name.last}
+                </td>
+                <td>
+                  {empData.location.street.number}{" "}
+                  {empData.location.street.name}, {empData.location.city}
+                </td>
+                <td>{empData.email}</td>
+                <td>{empData.phone}</td>
               </tr>
-            </thead>
-            <tbody>
-              {results.map((empData) => (
-                <tr key={empData.length - 1}>
-                  <td><img src={empData.image} alt="employee thumbnail"></img></td>
-                  <td>
-                    {empData.firstName} {empData.lastName}
-                  </td>
-                  <td>
-                    {empData.number} {empData.streetName}, {empData.address}
-                  </td>
-                  <td>{empData.email}</td>
-                  <td>{empData.phone}</td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
+            ))}
+          </tbody>
+        </table>
       </div>
-    </div>
   );
 }
 
