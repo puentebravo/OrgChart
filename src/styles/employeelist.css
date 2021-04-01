@@ -1,0 +1,9 @@
+table {
+    width: auto;
+    margin-left: 15px;
+    margin-right: 15px;
+}
+
+.row {
+    background-color: rgb(39, 38, 38);
+}
