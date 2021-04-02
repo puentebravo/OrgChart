@@ -1,1 +1,0 @@
-{"version":3,"sources":["webpack://src/styles/footer.css"],"names":[],"mappings":"AAAA,QACI,iBAAkB,CAClB,QAAS,CACT,UAAW,CACX,WAAY,CACZ,gBAAiB,CACjB,UACF","file":"main.c6820d52.chunk.css","sourcesContent":[".footer {\r\n    position: absolute;\r\n    bottom: 0;\r\n    width: 100%;\r\n    height: 60px;\r\n    line-height: 60px;\r\n    color: white;\r\n  }"]}
