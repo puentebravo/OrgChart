@@ -13,7 +13,7 @@ function EmployeeList() {
 
   return (
       <div className="row">
-        <table className="table table-dark table-striped">
+        <table className="table table-dark table-striped" id="empList"> 
           <thead>
             <tr>
               <th scope="col">Image</th>
