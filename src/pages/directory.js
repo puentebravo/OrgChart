@@ -1,41 +1,52 @@
 import React, { useEffect, useState } from "react";
-import API from "../utils/API";
 import StaticHeader from "../components/header";
+
 import EmployeeList from "../components/employeelist";
 import StickyFooter from "../components/footer";
 
 function Directory() {
-  const [tableEntry, setTableEntry] = useState({
-    image: "",
-    firstName: "",
-    lastName: "",
-    number: [],
-    streetName: "",
-    address: "",
-    email: "",
-    phone: "",
-  });
+  const [filter, setFilter] = useState(null);
 
   useEffect(() => {
-    API.ping().then((res) => {
-      console.log(res);
-      setTableEntry({
-        image: res.data.results[0].picture.thumbnail,
-        firstName: res.data.results[0].name.first,
-        lastName: res.data.results[0].name.last,
-        number: res.data.results[0].location.street.number,
-        streetName: res.data.results[0].location.street.name,
-        address: res.data.results[0].location.city,
-        email: res.data.results[0].email,
-        phone: res.data.results[0].phone,
-      });
-    });
-  }, []);
+    const tableEl = document.getElementById("empList");
+    const trData = tableEl.getElementsByTagName("tr");
+
+    if (!filter) {
+      return;
+    }
+
+    for (let i = 0; i < trData.length; i++) {
+      let tdData = trData[i].getElementsByTagName("td")[1];
+      if (tdData) {
+        let content = tdData.textContent || tdData.innerText;
+        if (content.indexOf(filter) > -1) {
+          trData[i].style.display = "";
+        } else {
+          trData[i].style.display = "none";
+        }
+      }
+    }
+  }, [filter]);
+
+  const handleInputChange = (event) => {
+    setFilter(event.target.value);
+    if (event.target.value === "") {
+      setFilter(null)
+    }
+  };
+
+  const handleFormSubmit = (event) => {
+    event.preventDefault();
+  };
 
   return (
     <div>
-      <StaticHeader />
-      <EmployeeList results={tableEntry}/>
+      <StaticHeader
+        search={filter}
+        handleFormSubmit={handleFormSubmit}
+        handleInputChange={handleInputChange}
+      />
+      <EmployeeList />
       <StickyFooter />
     </div>
   );
