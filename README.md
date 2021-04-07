@@ -4,6 +4,8 @@
 
 Employees are the bedrock of any business - your most precious resource, and your partners for success. No matter what size your operation, having a way to centrally store and access non-sensitive data about those working for you is essential. Enter OrgChart. Powered by React, this easily deployable, modular application allows you to pull from a database, sort, and search through your employee records quickly and easily.
 
+[See it in action here!](https://www.charliepuente.com/OrgChart/)
+
 ## Table of Contents
 
 - [Installation](#installation)
